@@ -73,7 +73,7 @@ const updateNote = (request,h)=>{
             message: "Notes has been updated",
         }
         console.log(`Succeed ${bodyResponse}`)
-        return h.response(JSON.stringify(bodyResponse)).code(201).type('application/json')
+        return h.response(JSON.stringify(bodyResponse)).code(200).type('application/json')
     }else{
         let bodyResponseError = {
             status: "error",
