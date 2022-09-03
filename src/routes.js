@@ -1,4 +1,4 @@
-import { postNotes, getAllNotes, getSpecificNote } from "./handler.js"
+import { postNotes, getAllNotes, getSpecificNote, updateNote, deleteNote } from "./handler.js"
 
 const routes = [
     {
@@ -19,6 +19,16 @@ const routes = [
         path : '/notes',
         handler:postNotes
     },
+    {
+        method : "PUT",
+        path : '/notes/{id}',
+        handler : updateNote
+    },
+    {
+        method : 'DELETE',
+        path : '/notes/{id}',
+        handler : deleteNote
+    }
    
 ]
 
