@@ -49,7 +49,7 @@ const getSpecificNote = (request,h)=>{
         return h.response(JSON.stringify({
             status : "success",
             data : {
-                note
+                note : note[0]
             }
         })).code(200);
     }
@@ -87,7 +87,14 @@ const deleteNote = (request,h)=>{
     const {id} = request.params;
     let index = notes.findIndex(note=>note.id===id)
     if(index!==-1) {
-        delete notes[index];
+        if(index===0) notes.shift()
+        else if(index==notes.length) notes.pop()
+        else {
+            let container = notes[0];
+            notes[0] = notes[index];
+            notes[index] = container;
+            notes.shift();
+        }
         let bodyResponse = {
             status: "success",
             message: "Notes has been deleted",
